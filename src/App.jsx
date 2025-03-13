@@ -1,6 +1,6 @@
-import React from 'react'
-import Search from './components/search.jsx'
-import { useState } from 'react'
+import React from 'react';
+import Search from './components/Search.jsx';
+import { useState } from 'react';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
