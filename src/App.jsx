@@ -12,7 +12,7 @@ const App = () => {
       <div className="wrapper">
         <header>
           <img src="./hero.png" alt="Hero Banner" />
-          <h1>Get <span className="text-gradient">Movies</span> For All Moods And Occassions For You and Loved Ones</h1>
+          <h1>Get Movies For All Your <span className="text-gradient"> Moods And Occassions</span></h1>
         </header>
 
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
