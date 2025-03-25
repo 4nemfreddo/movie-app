@@ -37,12 +37,12 @@ const App = () => {
       const data = await response.json();
 
       if(data.response == 'False') {
-        setErrorMessage(value: data.Error || 'Failed to fetch movies');
-        setMovieList(value: []);
+        setErrorMessage(data.Error || 'Failed to fetch movies');
+        setMovieList([]);
         return;
       }
 
-        setMovieList(value: data.results || []);
+        setMovieList(data.results || []);
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Error fetching movies. Please try again Later.');
