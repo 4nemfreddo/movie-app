@@ -9,7 +9,7 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const API_OPTIONS = {
   method: 'GET',
-    Headers: {
+    headers: {
     accept: 'application/json',
     Authorization: `Bearer ${API_KEY}`
   }
@@ -36,7 +36,8 @@ const App = () => {
 
       const data = await response.json();
 
-      if(data.response == 'False') {
+      // if(data.response == 'False') {
+      if (!data.results || data.results.length === 0) {  // ✅ Correct check
         setErrorMessage(data.Error || 'Failed to fetch movies');
         setMovieList([]);
         return;
@@ -51,7 +52,8 @@ const App = () => {
     }
   }
   
-  useEffect(() => {  
+  useEffect(() => { 
+    console.log("TMDB API Key:", API_KEY);  // Debugging 
     fetchMovies();
   }, []);
   
