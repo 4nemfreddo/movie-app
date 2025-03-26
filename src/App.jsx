@@ -22,12 +22,14 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (query = '') => {
     setIsLoading(true);
     setErrorMessage('');
 
     try {
-      const endpoint = `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`;
+      const endpoint = query
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        : `${API_BASE_URL}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`;
 
       const response = await fetch(endpoint, API_OPTIONS);
 
@@ -54,9 +56,9 @@ const App = () => {
   }
   
   useEffect(() => { 
-    console.log("TMDB API Key:", API_KEY);  // Debugging 
-    fetchMovies();
-  }, []);
+    // console.log("TMDB API Key:", API_KEY);  // Debugging 
+    fetchMovies(searchTerm);
+  }, [searchTerm]);
   
   return ( 
     <main>
